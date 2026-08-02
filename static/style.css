@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Wrapper */
+.wrapper {
+    position: relative;
+}
+
+/* Apple Body - improved shape */
+.apple {
+    width: 280px;
+    height: 300px;
+    background: radial-gradient(circle at 30% 30%, #ff5a5a, #b30000 75%);
+    
+    /* Custom apple contour */
+    border-radius: 50% 50% 45% 45% / 55% 55% 40% 40%;
+    
+    position: relative;
+
+    box-shadow:
+        inset -20px -30px 40px rgba(0,0,0,0.35),
+        0 25px 35px rgba(0,0,0,0.15);
+}
+
+/* Top dent */
+.apple::before {
+    content: "";
+    width: 120px;
+    height: 60px;
+    background: white;
+    position: absolute;
+    top: -30px;
+    left: 80px;
+    border-radius: 50%;
+}
+
+/* Shine */
+.shine {
+    width: 100px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    border-radius: 50%;
+}
+
+/* Stem */
+.stem {
+    width: 15px;
+    height: 70px;
+    background: #5a3a1b;
+    position: absolute;
+    top: -60px;
+    left: 135px;
+    border-radius: 10px;
+}
+
+/* Leaf */
+.leaf {
+    width: 130px;
+    height: 60px;
+    background: linear-gradient(to right, #4caf50, #1b5e20);
+    position: absolute;
+    top: -85px;
+    left: 155px;
+    border-radius: 60% 40% 60% 40%;
+    transform: rotate(-25deg);
+    box-shadow: inset -10px -10px 15px rgba(0,0,0,0.25);
+}
