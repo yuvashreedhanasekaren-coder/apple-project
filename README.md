@@ -70,8 +70,3 @@ This project uses SVG to create a realistic apple illustration with:
 ## 👩‍💻 Author
 
 **Yuvashree**
-
-GitHub: yuvashreedhanasekaren-coder
-
-```
-```
