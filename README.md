@@ -1,4 +1,3 @@
-````markdown
 # 🍎 Realistic Apple SVG
 
 A realistic apple illustration created using **HTML, CSS, and SVG**. The project demonstrates how SVG vector graphics, gradients, lighting effects, leaf details, and shadows can be combined to create a visually appealing and scalable apple design.
@@ -45,8 +44,6 @@ apple-project/
 ├── style.css
 └── README.md
 ````
-
----
 
 ## 🚀 How to Run
 
