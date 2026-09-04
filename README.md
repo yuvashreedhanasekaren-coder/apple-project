@@ -1,30 +1,77 @@
+````markdown
 # 🍎 Realistic Apple SVG
 
-A realistic Apple illustration created using HTML, CSS and SVG.
+A realistic apple illustration created using **HTML, CSS, and SVG**. The project demonstrates how SVG vector graphics, gradients, lighting effects, leaf details, and shadows can be combined to create a visually appealing and scalable apple design.
 
-## Project Preview
+---
 
-This project creates a realistic Apple illustration using SVG vector graphics with smooth gradients, lighting effects, leaf details, and shadows. The design is scalable and does not require any external images.
+## 📸 Project Preview
 
-## Features
+<p align="center">
+  <img src="static/SVG_apple.png" alt="Realistic Apple SVG Preview" width="350">
+</p>
 
-- Realistic Apple Design
-- SVG Gradients
-- Shine Effect
-- Shadow Effect
-- Responsive Design
+---
 
-## Technologies Used
+## ✨ Features
 
-- HTML5
-- CSS3
-- SVG
+- 🍎 Realistic Apple Design
+- 🎨 Smooth SVG Gradients
+- 💡 Realistic Shine and Lighting Effect
+- 🍃 Detailed Leaf Design
+- 🌑 Natural Shadow Effect
+- 📱 Responsive and Scalable Design
+- 🖼️ No External Image Assets Required
 
-## How to Run
+---
+
+## 🛠️ Technologies Used
+
+- **HTML5**
+- **CSS3**
+- **SVG**
+
+---
+
+## 📂 Project Structure
+
+```text
+apple-project/
+│
+├── static/
+│   └── SVG_apple.png
+│
+├── index.html
+├── style.css
+└── README.md
+````
+
+---
+
+## 🚀 How to Run
 
 1. Download the project.
-2. Open `index.html` in your browser.
+2. Open index.html in your browser.
 
-## Author
+---
 
-Yuvashree
+## 🎯 Project Highlights
+
+This project uses SVG to create a realistic apple illustration with:
+
+* Gradient-based apple coloring
+* Soft lighting and shine effects
+* Realistic leaf and stem details
+* Shadow effects for depth
+* Scalable vector graphics
+
+---
+
+## 👩‍💻 Author
+
+**Yuvashree**
+
+GitHub: yuvashreedhanasekaren-coder
+
+```
+```
