@@ -25,9 +25,10 @@ body{
 }
 
 #refreshBtn{
-    position:fixed;
-    right:25px;
-    bottom:25px;
+    position:absolute;
+    left:50%;
+    bottom:-110px;
+    transform:translateX(-50%);
     padding:11px 19px;
     border:none;
     border-radius:25px;
@@ -48,15 +49,16 @@ body{
 }
 
 #refreshBtn:hover{
-
     transform:
+        translateX(-50%)
         translateY(-2px)
         scale(1.04);
+
     box-shadow:
         0 7px 22px rgba(255,23,68,.45);
 }
 
-//   SHADOW
+/* SHADOW */
 
 #shadow{
     position:absolute;
@@ -70,7 +72,7 @@ body{
    z-index:1;
 }
 
-   //NORMAL APPLE
+   /* NORMAL APPLE */
 
 #apple{
     width:260px;
@@ -81,8 +83,7 @@ body{
         opacity .15s ease;
 }
 
-//   BOUNCE
-
+ /* BOUNCE */
 
 .apple-bounce{
     animation:
@@ -164,7 +165,7 @@ body{
     }
 }
 
-//   CUT APPLE
+/*  CUT APPLE */
 
 #cutApple{
     position:absolute;
@@ -282,7 +283,7 @@ body{
     }
 }
 
-// KNIFE
+/* KNIFE */
 
 #knife{
 
@@ -411,7 +412,7 @@ body{
     }
 }
 
-//NOTES
+/* NOTES */
 
 #hint{
     position:absolute;
@@ -447,18 +448,11 @@ body{
 
 <div class="apple-container">
 
-    //   REFRESH
-    
-    <button id="refreshBtn">
-        ↻ New Apple
-    </button>
-
-    //
-    SHADOW
+    <!-- SHADOW -->
 
          <div id="shadow"></div>
 
-    // NORMAL APPLE
+    <!--  NORMAL APPLE -->
 
     <svg
         id="apple"
@@ -590,7 +584,7 @@ body{
 
     </svg>
 
-    //CUT APPLE
+    <!-- CUT APPLE -->
 
     <svg
         id="cutApple"
@@ -838,7 +832,7 @@ body{
             fill="none"/>
     </svg>
 
-    //KNIFE
+    <!-- KNIFE -->
     <svg
         id="knife"
         viewBox="0 0 300 100">
@@ -899,6 +893,10 @@ body{
     <div id="cutHint">
         🔪 Double click the apple to cut
     </div>
+
+    <button id="refreshBtn">
+        ↻ New Apple
+    </button>
 
 </div>
 <script>
@@ -1046,7 +1044,7 @@ apple.addEventListener(
     }
 );
 
-// REFRESH
+//REFRESH
 
 refreshBtn.addEventListener(
     "click",
