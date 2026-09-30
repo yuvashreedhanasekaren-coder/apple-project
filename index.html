@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Realistic Apple - Cut & Bounce</title>
-
+<title>Realistic Apple</title>
 <style>
 
 body{
@@ -13,148 +11,137 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     overflow:hidden;
 }
 
-/* Main area */
 .apple-container{
-    width:320px;
-    height:390px;
+    width:360px;
+    height:420px;
     display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
 }
 
-/* Apple pieces */
+#refreshBtn{
+    position:absolute;
+    left:50%;
+    bottom:-100px;
+    transform:translateX(-50%);
+    padding:11px 19px;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(
+        135deg,
+        #ff4b4b,
+        #ff1744
+    );
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:
+        0 5px 18px rgba(255,23,68,.35);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+#refreshBtn:hover{
+    transform:
+        translateX(-50%)
+        translateY(-2px)
+        scale(1.04);
+
+    box-shadow:
+        0 7px 22px rgba(255,23,68,.45);
+}
+
+/* SHADOW */
+
+#shadow{
+    position:absolute;
+    width:145px;
+    height:32px;
+    background:#777;
+    opacity:.18;
+    border-radius:50%;
+    bottom:27px;
+    filter:blur(5px);
+   z-index:1;
+}
+
+   /* NORMAL APPLE */
+
 #apple{
     width:260px;
     position:absolute;
-    z-index:3;
-    overflow:visible;
-    cursor:pointer;
-}
-
-.apple-piece{
-    transform-box:fill-box;
-    transform-origin:center;
-}
-
-.left-piece{
-    clip-path:url(#leftClip);
-}
-
-.right-piece{
-    clip-path:url(#rightClip);
-}
-
-/* Bounce before the cut */
-.apple-bounce{
-    animation:appleBounce 0.7s cubic-bezier(.25,.8,.25,1);
-}
-
-@keyframes appleBounce{
-    0%{
-        transform:translateY(0) scaleX(1) scaleY(1);
-    }
-
-    25%{
-        transform:translateY(-18px) scaleX(.99) scaleY(1.01);
-    }
-
-    55%{
-        transform:translateY(-4px) scaleX(1) scaleY(1);
-    }
-
-    72%{
-        transform:translateY(3px) scaleX(1.015) scaleY(.985);
-    }
-
-    100%{
-        transform:translateY(0) scaleX(1) scaleY(1);
-    }
-}
-
-/* After the cut, the two halves separate */
-.cut-left{
-    animation:cutLeft .65s .35s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.cut-right{
-    animation:cutRight .65s .35s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-@keyframes cutLeft{
-    from{ transform:translateX(0) rotate(0deg); }
-    to{ transform:translateX(-28px) rotate(-4deg); }
-}
-
-@keyframes cutRight{
-    from{ transform:translateX(0) rotate(0deg); }
-    to{ transform:translateX(28px) rotate(4deg); }
-}
-
-/* Cutting knife */
-#knife{
-    position:absolute;
-    width:190px;
-    height:190px;
-    left:65px;
-    top:45px;
     z-index:5;
-    pointer-events:none;
-    opacity:0;
-    transform:translateX(-190px) rotate(-24deg);
+    cursor:pointer;
+    transition:
+        opacity .15s ease;
 }
 
-/* Knife appears and sweeps across the apple */
-.knife-cut{
-    animation:knifeCut .55s cubic-bezier(.45,0,.55,1) forwards;
-}
+ /* BOUNCE */
 
-@keyframes knifeCut{
-    0%{
-        opacity:0;
-        transform:translateX(-190px) rotate(-24deg);
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    65%{
-        opacity:1;
-        transform:translateX(95px) rotate(-24deg);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateX(150px) rotate(-24deg);
-    }
-}
-
-/* Shadow */
-#shadow{
-    position:absolute;
-    width:130px;
-    height:30px;
-    background:black;
-    opacity:.15;
-    border-radius:50%;
-    bottom:25px;
-    filter:blur(3px);
-    z-index:1;
+.apple-bounce{
+    animation:
+        appleBounce
+        .7s
+        cubic-bezier(.25,.8,.25,1);
 }
 
 .shadow-bounce{
-    animation:shadowBounce .7s cubic-bezier(.25,.8,.25,1);
+    animation:
+        shadowBounce
+        .7s
+        cubic-bezier(.25,.8,.25,1);
+}
+
+@keyframes appleBounce{
+
+    0%{
+        transform:
+            translateY(0)
+            scaleX(1)
+            scaleY(1);
+    }
+
+    25%{
+        transform:
+            translateY(-18px)
+            scaleX(.99)
+            scaleY(1.01);
+    }
+
+    55%{
+        transform:
+            translateY(-4px)
+            scaleX(1)
+            scaleY(1);
+    }
+
+    72%{
+        transform:
+            translateY(3px)
+            scaleX(1.015)
+            scaleY(.985);
+    }
+
+    100%{
+        transform:
+            translateY(0)
+            scaleX(1)
+            scaleY(1);
+    }
 }
 
 @keyframes shadowBounce{
+
     0%{
         transform:scaleX(1);
-        opacity:.15;
+        opacity:.18;
     }
 
     25%{
@@ -164,64 +151,269 @@ body{
 
     55%{
         transform:scaleX(.92);
-        opacity:.12;
+        opacity:.13;
     }
 
     72%{
         transform:scaleX(1.08);
-        opacity:.17;
+        opacity:.20;
     }
 
     100%{
         transform:scaleX(1);
-        opacity:.15;
+        opacity:.18;
     }
 }
 
-/* Small cut line */
-#cut-line{
+/*  CUT APPLE */
+
+#cutApple{
     position:absolute;
-    width:5px;
-    height:285px;
-    border-radius:50%;
-    background:linear-gradient(
-        to bottom,
-        rgba(255,255,255,0),
-        rgba(255,255,255,.95) 25%,
-        rgba(255,245,230,1) 50%,
-        rgba(255,255,255,.95) 75%,
-        rgba(255,255,255,0)
-    );
-    left:calc(50% - 2px);
-    top:65px;
+    width:260px;
     z-index:4;
     opacity:0;
-    transform:rotate(4deg) scaleY(.2);
     pointer-events:none;
 }
 
-.show-cut{
-    animation:showCut .7s .28s ease-out forwards;
+.apple-slice{
+
+    transform-box:fill-box;
+
+    transform-origin:center;
+
 }
 
-@keyframes showCut{
-    0%{
-        opacity:0;
-        transform:rotate(4deg) scaleY(.2);
+/* TOP */
+
+.slice-top-cut{
+    animation:
+        sliceTop
+        .65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+/* SECOND */
+
+.slice-two-cut{
+
+    animation:
+        sliceTwo
+        .65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+/* THIRD */
+.slice-three-cut{
+    animation:
+        sliceThree
+        .65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+/* BOTTOM */
+
+.slice-bottom-cut{
+
+    animation:
+        sliceBottom
+        .65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+@keyframes sliceTop{
+
+    from{
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
+    to{
+        transform:
+            translate(4px,-20px)
+            rotate(1deg);
+    }
+}
+
+@keyframes sliceTwo{
+
+    from{
+        transform:
+            translate(0,0)
+            rotate(0);
+    }
+
+    to{
+        transform:
+            translate(-8px,-7px)
+            rotate(-1deg);
+    }
+}
+
+@keyframes sliceThree{
+
+    from{
+        transform:
+            translate(0,0)
+            rotate(0);
+    }
+
+    to{
+        transform:
+            translate(8px,7px)
+            rotate(1deg);
+    }
+}
+
+@keyframes sliceBottom{
+
+    from{
+        transform:
+            translate(0,0)
+            rotate(0);
+    }
+    to{
+        transform:
+            translate(-5px,20px)
+            rotate(-1deg);
+    }
+}
+
+/* KNIFE */
+
+#knife{
+
+    position:absolute;
+    width:250px;
+    height:100px;
+    left:-260px;
+    top:135px;
+    z-index:15;
+    pointer-events:none;
+    opacity:0;
+}
+
+.knife-cut{
+    animation:
+        knifeCut
+        1.8s
+        ease-in-out
+        forwards;
+}
+
+@keyframes knifeCut{
+
+    /* Start */
+
+    0%{
+        opacity:0;
+        transform:
+            translateX(0)
+            translateY(0);
+    }
+
+    /* First cut */
+
+    7%{
+        opacity:1;
+        transform:
+            translateX(0)
+            translateY(0);
+    }
+
+    22%{
+        opacity:1;
+        transform:
+            translateX(500px)
+            translateY(0);
+    }
+
+    27%{
+        opacity:0;
+        transform:
+            translateX(520px)
+            translateY(0);
+    }
+
+    /* Return for second cut */
+
+    30%{
+        opacity:0;
+        transform:
+            translateX(0)
+            translateY(55px);
+    }
+
+
     35%{
-        opacity:.9;
-        transform:rotate(4deg) scaleY(1);
+        opacity:1;
+        transform:
+            translateX(0)
+            translateY(55px);
+    }
+
+    /* Second cut */
+
+    50%{
+        opacity:1;
+        transform:
+            translateX(500px)
+            translateY(55px);
+    }
+
+    55%{
+        opacity:0;
+        transform:
+            translateX(520px)
+            translateY(55px);
+    }
+
+    /* Return for third cut */
+
+    58%{
+        opacity:0;
+        transform:
+            translateX(0)
+            translateY(110px);
+    }
+
+    63%{
+        opacity:1;
+        transform:
+            translateX(0)
+            translateY(110px);
+    }
+
+    /* Third cut */
+
+    80%{
+        opacity:1;
+        transform:
+            translateX(500px)
+            translateY(110px);
+    }
+
+    86%{
+        opacity:0;
+        transform:
+            translateX(520px)
+            translateY(110px);
     }
 
     100%{
         opacity:0;
-        transform:rotate(4deg) scaleY(1);
+        transform:
+            translateX(520px)
+            translateY(110px);
     }
 }
 
-/* Hint */
+/* NOTES */
+
 #hint{
     position:absolute;
     bottom:-5px;
@@ -229,238 +421,693 @@ body{
     color:#777;
     letter-spacing:.3px;
     opacity:.8;
-    transition:opacity .3s ease, transform .3s ease;
+    z-index:20;
+    transition:
+        opacity .3s ease;
 }
 
-#hint.hide{
-    opacity:0;
-    transform:translateY(5px);
-}
-
-#reset-hint{
+#cutHint{
     position:absolute;
     bottom:-28px;
-    font-size:12px;
-    color:#999;
-    opacity:0;
-    transition:opacity .3s ease;
+    font-size:14px;
+    color:#777;
+    letter-spacing:.3px;
+    opacity:.8;
+    z-index:20;
+    transition:
+        opacity .3s ease;
 }
 
-#reset-hint.show{
-    opacity:1;
+.hide-note{
+    opacity:0 !important;
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="apple-container">
 
-    <div id="shadow"></div>
+    <!-- SHADOW -->
 
-    <!-- Apple -->
-    <svg id="apple" viewBox="0 0 500 600">
+         <div id="shadow"></div>
+
+    <!--  NORMAL APPLE -->
+
+    <svg
+        id="apple"
+        viewBox="0 0 500 600">
 
         <defs>
 
-            <radialGradient id="appleGrad" cx="35%" cy="28%" r="70%">
-                <stop offset="0%" stop-color="#ffd6b3"/>
-                <stop offset="25%" stop-color="#ff3b2f"/>
-                <stop offset="60%" stop-color="#d40000"/>
-                <stop offset="100%" stop-color="#7a0000"/>
+            <!-- APPLE -->
+
+            <radialGradient
+                id="appleGrad"
+                cx="35%"
+                cy="28%"
+                r="70%">
+
+                <stop
+                    offset="0%"
+                    stop-color="#ffd6b3"/>
+
+                <stop
+                    offset="22%"
+                    stop-color="#ff4a3d"/>
+
+                <stop
+                    offset="55%"
+                    stop-color="#e00000"/>
+
+                <stop
+                    offset="100%"
+                    stop-color="#760000"/>
+
             </radialGradient>
+
+            <!-- SHINE -->
 
             <radialGradient id="shineGrad">
-                <stop offset="0%" stop-color="white" stop-opacity=".95"/>
-                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+
+                <stop
+                    offset="0%"
+                    stop-color="white"
+                    stop-opacity=".95"/>
+
+                <stop
+                    offset="100%"
+                    stop-color="white"
+                    stop-opacity="0"/>
+
             </radialGradient>
 
-            <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7ed957"/>
-                <stop offset="100%" stop-color="#145a22"/>
+            <!-- LEAF -->
+
+            <linearGradient
+                id="leafGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%">
+
+                <stop
+                    offset="0%"
+                    stop-color="#7ed957"/>
+
+                <stop
+                    offset="100%"
+                    stop-color="#145a22" />
+
             </linearGradient>
-
-            <!-- Left and right halves -->
-            <clipPath id="leftClip">
-                <rect x="0" y="0" width="247" height="600"/>
-            </clipPath>
-
-            <clipPath id="rightClip">
-                <rect x="253" y="0" width="247" height="600"/>
-            </clipPath>
-
         </defs>
 
-        <!-- LEFT HALF -->
-        <g id="leftPiece" class="apple-piece left-piece">
+        <path
+            d="
+            M250 170
+            C170 140 110 240 130 340
+            C150 430 200 470 250 470
+            C300 470 350 430 370 340
+            C390 240 330 140 250 170
+            Z
+            "
+            fill="url(#appleGrad)"
+        />
 
-            <path d="
+        <!-- SHINE -->
+
+        <ellipse
+            cx="195"
+            cy="275"
+            rx="58"
+            ry="105"
+            fill="url(#shineGrad)"/>
+
+        <!--STEM -->
+
+        <path
+            d="
+            M245 120
+            C240 100 260 90 270 110
+            C280 130 260 160 250 170
+            "
+            fill="#5a3a1b"/>
+
+        <!-- LEAF -->
+
+        <path
+            d="
+            M270 120
+            C340 70 420 140 360 200
+            C310 240 270 190 270 120
+            Z
+            "
+            fill="url(#leafGrad)"/>
+
+        <path
+            d="
+            M270 120
+            C330 150 350 170 360 200
+            "
+            stroke="#0e3d16"
+            stroke-width="2"
+            fill="none"/>
+
+        <path
+            d="
+            M300 135
+            C330 145 345 160 355 180
+            "
+            stroke="#0e3d16"
+            stroke-width="1"
+            fill="none"/>
+
+    </svg>
+
+    <!-- CUT APPLE -->
+
+    <svg
+        id="cutApple"
+        viewBox="0 0 500 600">
+
+        <defs>
+
+            <!-- APPLE GRADIENT -->
+
+            <radialGradient
+                id="cutAppleGrad"
+                cx="35%"
+                cy="28%"
+                r="70%">
+
+                <stop
+                    offset="0%"
+                    stop-color="#ffd6b3"/>
+
+                <stop
+                    offset="22%"
+                    stop-color="#ff4a3d"/>
+
+                <stop
+                    offset="55%"
+                    stop-color="#e00000"/>
+
+                <stop
+                    offset="100%"
+                    stop-color="#760000"/>
+
+            </radialGradient>
+
+            <!-- SHINE -->
+
+            <radialGradient id="cutShine">
+
+                <stop
+                    offset="0%"
+                    stop-color="white"
+                    stop-opacity=".75"
+                />
+
+                <stop
+                    offset="100%"
+                    stop-color="white"
+                    stop-opacity="0"
+                />
+
+            </radialGradient>
+
+            <!-- LEAF -->
+
+            <linearGradient
+                id="cutLeaf"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%">
+
+                <stop
+                    offset="0%"
+                    stop-color="#7ed957"/>
+
+                <stop
+                    offset="100%"
+                    stop-color="#145a22" />
+
+            </linearGradient>
+
+            <!-- TOP SLICE -->
+
+            <clipPath id="topClip">
+                <path
+                    d="
+                    M250 165
+                    C205 145 160 160 135 205
+                    C115 240 112 260 116 285
+                    L384 285
+                    C388 250 380 215 350 185
+                    C320 155 280 150 250 165
+                    Z
+                    "
+                />
+
+            </clipPath>
+
+            <!-- SECOND SLICE -->
+
+            <clipPath id="secondClip">
+
+                <path
+                    d="
+                    M116 280
+                    C112 305 116 330 123 355
+                    L377 355
+                    C383 330 388 305 384 280
+                    Z
+                    "
+                />
+            </clipPath>
+
+            <!-- THIRD SLICE -->
+
+            <clipPath id="thirdClip">
+
+                <path
+                    d="
+                    M123 350
+                    C130 380 145 410 165 430
+                    L335 430
+                    C355 410 370 380 377 350
+                    Z
+                    "/>
+
+            </clipPath>
+            
+            <!-- BOTTOM SLICE -->
+
+            <clipPath id="bottomClip">
+                <path
+                    d="
+                    M165 425
+                    C185 455 215 470 250 470
+                    C285 470 315 455 335 425
+                    Z
+                    "/>
+            </clipPath>
+        </defs>
+
+        // TOP SLICE
+
+        <g
+            id="sliceTop"
+            class="apple-slice"
+            clip-path="url(#topClip)">
+
+            <path
+                d="
                 M250 170
                 C170 140 110 240 130 340
                 C150 430 200 470 250 470
                 C300 470 350 430 370 340
-                C390 240 330 140 250 170 Z"
-                fill="url(#appleGrad)"
+                C390 240 330 140 250 170
+                Z
+                "
+                fill="url(#cutAppleGrad)"/>
+
+            <ellipse
+                cx="195"
+                cy="245"
+                rx="58"
+                ry="70"
+                fill="url(#cutShine)"
             />
-
-            <ellipse cx="200" cy="280" rx="60" ry="110"
-                     fill="url(#shineGrad)"/>
-
-            <path d="
-                M245 120
-                C240 100 260 90 270 110
-                C280 130 260 160 250 170"
-                fill="#5a3a1b"
-            />
-
-            <path d="
-                M270 120
-                C340 70 420 140 360 200
-                C310 240 270 190 270 120 Z"
-                fill="url(#leafGrad)"
-            />
-
-            <path d="
-                M270 120
-                C330 150 350 170 360 200"
-                stroke="#0e3d16" stroke-width="2" fill="none"
-            />
-
-            <path d="
-                M300 135
-                C330 145 345 160 355 180"
-                stroke="#0e3d16" stroke-width="1" fill="none"
-            />
-
         </g>
 
-        <!-- RIGHT HALF -->
-        <g id="rightPiece" class="apple-piece right-piece">
+        //SECOND SLICE
+        
+        <g
+            id="sliceTwo"
+            class="apple-slice"
+            clip-path="url(#secondClip)">
 
-            <path d="
+            <path
+                d="
                 M250 170
                 C170 140 110 240 130 340
                 C150 430 200 470 250 470
                 C300 470 350 430 370 340
-                C390 240 330 140 250 170 Z"
-                fill="url(#appleGrad)"
+                C390 240 330 140 250 170
+                Z
+                "
+                fill="url(#cutAppleGrad)"
             />
-
-            <ellipse cx="200" cy="280" rx="60" ry="110"
-                     fill="url(#shineGrad)"/>
-
-            <path d="
-                M245 120
-                C240 100 260 90 270 110
-                C280 130 260 160 250 170"
-                fill="#5a3a1b"
-            />
-
-            <path d="
-                M270 120
-                C340 70 420 140 360 200
-                C310 240 270 190 270 120 Z"
-                fill="url(#leafGrad)"
-            />
-
-            <path d="
-                M270 120
-                C330 150 350 170 360 200"
-                stroke="#0e3d16" stroke-width="2" fill="none"
-            />
-
-            <path d="
-                M300 135
-                C330 145 345 160 355 180"
-                stroke="#0e3d16" stroke-width="1" fill="none"
-            />
-
         </g>
 
-    </svg>
+        //THIRD SLICE
+        
+        <g
+            id="sliceThree"
+            class="apple-slice"
+            clip-path="url(#thirdClip)">
 
-    <!-- Cut line -->
-    <div id="cut-line"></div>
-
-    <!-- Knife -->
-    <svg id="knife" viewBox="0 0 200 200">
-        <g transform="rotate(-8 100 100)">
-            <rect x="104" y="28" width="22" height="130" rx="7"
-                  fill="#303030"/>
-            <path d="M104 30 L126 30 L185 92 L126 103 Z"
-                  fill="#d9dde2"/>
-            <path d="M126 103 L185 92 L126 112 Z"
-                  fill="#ffffff"/>
-            <rect x="105" y="145" width="20" height="42" rx="8"
-                  fill="#6b3f22"/>
+            <path
+                d="
+                M250 170
+                C170 140 110 240 130 340
+                C150 430 200 470 250 470
+                C300 470 350 430 370 340
+                C390 240 330 140 250 170
+                Z
+                "
+                fill="url(#cutAppleGrad)"
+            />
         </g>
+
+        //BOTTOM SLICE
+
+        <g
+            id="sliceBottom"
+            class="apple-slice"
+            clip-path="url(#bottomClip)">
+
+            <path
+                d="
+                M250 170
+                C170 140 110 240 130 340
+                C150 430 200 470 250 470
+                C300 470 350 430 370 340
+                C390 240 330 140 250 170
+                Z
+                "
+                fill="url(#cutAppleGrad)"
+            />
+        </g>
+
+        //STEM
+        <path
+            d="
+            M245 120
+            C240 100 260 90 270 110
+            C280 130 260 160 250 170
+            "
+            fill="#5a3a1b"/>
+
+        //LEAF
+
+        <path
+            d="
+            M270 120
+            C340 70 420 140 360 200
+            C310 240 270 190 270 120
+            Z
+            "
+            fill="url(#cutLeaf)"/>
+
+        <path
+            d="
+            M270 120
+            C330 150 350 170 360 200
+            "
+            stroke="#0e3d16"
+            stroke-width="2"
+            fill="none"/>
     </svg>
 
-    <div id="hint">🍎 Click the apple to cut</div>
-    <div id="reset-hint">Click again to reset</div>
+    <!-- KNIFE -->
+    <svg
+        id="knife"
+        viewBox="0 0 300 100">
+        <rect
+            x="5"
+            y="27"
+            width="75"
+            height="46"
+            rx="12"
+            fill="#272727"/>
+
+        <rect
+            x="15"
+            y="35"
+            width="55"
+            height="30"
+            rx="8"
+            fill="#704225"/>
+
+        <path
+            d="
+            M72 30
+            L285 30
+            L250 70
+            L72 70
+            Z
+            "
+            fill="#dfe4e8"
+            stroke="#555"
+            stroke-width="2"/>
+
+        <path
+            d="
+            M80 35
+            L275 35
+            L250 47
+            L80 47
+            Z
+            "
+            fill="white"
+            opacity=".8"/>
+
+        <path
+            d="
+            M72 70
+            L250 70
+            L285 30
+            "
+            fill="none"
+            stroke="#999"
+            stroke-width="2" />
+    </svg>
+
+    <div id="hint">
+        🍎 Click the apple to bounce
+    </div>
+
+    <div id="cutHint">
+        🔪 Double click the apple to cut
+    </div>
+
+    <button id="refreshBtn">
+        ↻ New Apple
+    </button>
 
 </div>
-
 <script>
 
-const apple = document.getElementById("apple");
-const leftPiece = document.getElementById("leftPiece");
-const rightPiece = document.getElementById("rightPiece");
-const shadow = document.getElementById("shadow");
-const knife = document.getElementById("knife");
-const cutLine = document.getElementById("cut-line");
-const hint = document.getElementById("hint");
-const resetHint = document.getElementById("reset-hint");
+//ELEMENTS
+
+const apple =
+    document.getElementById("apple");
+
+const shadow =
+    document.getElementById("shadow");
+
+const knife =
+    document.getElementById("knife");
+
+const cutApple =
+    document.getElementById("cutApple");
+
+const sliceTop =
+    document.getElementById("sliceTop");
+
+const sliceTwo =
+    document.getElementById("sliceTwo");
+
+const sliceThree =
+    document.getElementById("sliceThree");
+
+const sliceBottom =
+    document.getElementById("sliceBottom");
+
+const hint =
+    document.getElementById("hint");
+
+const cutHint =
+    document.getElementById("cutHint");
+
+const refreshBtn =
+    document.getElementById("refreshBtn");
 
 let isCut = false;
 
-function restartAnimation(element, className){
-    element.classList.remove(className);
-    void element.offsetWidth;
-    element.classList.add(className);
-}
+let clickTimer = null;
 
-apple.addEventListener("click", () => {
+apple.addEventListener(
+    "click",
+    function(){
 
-    if(isCut){
-        // Reset for another cut
+        clearTimeout(clickTimer);
+
+        clickTimer = setTimeout(
+            function(){
+
+                if(isCut){
+                    return;
+                }
+
+                apple.classList.remove(
+                    "apple-bounce"
+                );
+
+                shadow.classList.remove(
+                    "shadow-bounce"
+                );
+
+                void apple.offsetWidth;
+
+                void shadow.offsetWidth;
+
+                apple.classList.add(
+                    "apple-bounce"
+                );
+
+                shadow.classList.add(
+                    "shadow-bounce"
+                );
+            },
+            220
+        );
+    }
+);
+
+apple.addEventListener(
+    "dblclick",
+    function(){
+
+        clearTimeout(clickTimer);
+
+        if(isCut){
+            return;
+        }
+
+        isCut = true;
+
+        hint.classList.add(
+            "hide-note"
+        );
+
+        cutHint.classList.add(
+            "hide-note"
+        );
+
+        apple.classList.remove(
+            "apple-bounce"
+        );
+
+        /* Start knife */
+
+        knife.classList.remove(
+            "knife-cut"
+        );
+
+        void knife.offsetWidth;
+
+        knife.classList.add(
+            "knife-cut"
+        );
+
+        setTimeout(
+            function(){
+
+                apple.style.opacity = "0";
+
+                cutApple.style.opacity = "1";
+
+                /* Animate 4 slices */
+
+                sliceTop.classList.add(
+                    "slice-top-cut"
+                );
+
+                sliceTwo.classList.add(
+                    "slice-two-cut"
+                );
+
+                sliceThree.classList.add(
+                    "slice-three-cut"
+                );
+
+                sliceBottom.classList.add(
+                    "slice-bottom-cut"
+                );
+            },
+            1650
+        );
+    }
+);
+
+//REFRESH
+
+refreshBtn.addEventListener(
+    "click",
+    function(){
+
+        clearTimeout(clickTimer);
+
+        /* Reset state */
+
         isCut = false;
 
-        leftPiece.classList.remove("cut-left");
-        rightPiece.classList.remove("cut-right");
-        restartAnimation(leftPiece, "apple-bounce");
-        restartAnimation(rightPiece, "apple-bounce");
+        /* Show normal apple */
 
-        resetHint.classList.remove("show");
-        hint.textContent = "🍎 Click the apple to cut";
-        return;
+        apple.style.opacity = "1";
+
+        cutApple.style.opacity = "0";
+
+        /* Reset knife */
+
+        knife.classList.remove(
+            "knife-cut"
+        );
+
+        /* Reset slices */
+
+        sliceTop.classList.remove(
+            "slice-top-cut"
+        );
+
+        sliceTwo.classList.remove(
+            "slice-two-cut"
+        );
+
+        sliceThree.classList.remove(
+            "slice-three-cut"
+        );
+
+        sliceBottom.classList.remove(
+            "slice-bottom-cut"
+        );
+
+        apple.classList.remove(
+            "apple-bounce"
+        );
+
+        shadow.classList.remove(
+            "shadow-bounce"
+        );
+
+        hint.classList.remove(
+            "hide-note"
+        );
+
+        cutHint.classList.remove(
+            "hide-note"
+        );
+
+        void apple.offsetWidth;
+        void cutApple.offsetWidth;
+        void knife.offsetWidth;
     }
-
-    isCut = true;
-
-    // Hide first hint
-    hint.classList.add("hide");
-
-    // Bounce
-    restartAnimation(leftPiece, "apple-bounce");
-    restartAnimation(rightPiece, "apple-bounce");
-    restartAnimation(shadow, "shadow-bounce");
-
-    // Knife + cutting line
-    restartAnimation(knife, "knife-cut");
-    restartAnimation(cutLine, "show-cut");
-
-    // Split after the knife passes
-    setTimeout(() => {
-        leftPiece.classList.add("cut-left");
-        rightPiece.classList.add("cut-right");
-        resetHint.classList.add("show");
-    }, 100);
-
-});
+);
 
 </script>
-
 </body>
 </html>

@@ -5,11 +5,13 @@ An interactive HTML, CSS, and JavaScript project that creates a realistic-lookin
 The project demonstrates how SVG, CSS animations, and JavaScript event handling can be combined to create an interactive web experience without using external libraries.
 
 ---
-
 ## 🌐 Live Demo
 
-https://yuvashreedhanasekaren-coder.github.io/apple-project/
+🔗 [View Realistic Apple Live Demo](https://yuvashreedhanasekaren-coder.github.io/apple-project/)
 
+## 🖼️ Project Preview
+
+![Realistic Apple Preview](static/SVG_apple.png)
 ---
 
 ## 📌 Project Overview
@@ -473,16 +475,6 @@ Possible future improvements include:
 * Interactive fruit selection
 * Dark mode
 * Improved responsive design
-
----
-
-# 👩‍💻 Author
-
-**Yuvashree**
-
-GitHub:
-
-[https://github.com/yuvashreedhanasekaren-coder](https://github.com/yuvashreedhanasekaren-coder)
 
 ---
 
